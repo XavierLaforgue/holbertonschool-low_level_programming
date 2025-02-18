@@ -1,11 +1,11 @@
 #include <stdio.h>
 
-/** 
- * main prints the string "req_string" exactly
- * 
+/**
+ * main - prints the string "req_string" exactly
+ *
  * req_string: a string with a special character (")
- *  
- * return: 0
+ *
+ * Return: always 0
  */
 
 int main(void)
