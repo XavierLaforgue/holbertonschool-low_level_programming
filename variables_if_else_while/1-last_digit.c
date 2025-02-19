@@ -19,13 +19,12 @@ int main(void)
 	n = rand() - RAND_MAX / 2;
 	/* your code goes there */
 	nmod10 = n % 10;
-	printf("n mod 10 is %d\n", nmod10);
 	printf("Last digit of %d is %d and is ", n, nmod10);
-	if (n == 0)
+	if (nmod10 == 0)
 		printf("0\n");
-	else if (n < 6)
+	else if (nmod10 < 6)
 		printf("less than 6 and not 0\n");
-	else if (n > 5)
+	else if (nmod10 > 5)
 	printf("greater than 5\n");
 
  	return (0);
