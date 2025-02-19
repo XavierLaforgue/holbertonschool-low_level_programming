@@ -27,5 +27,5 @@ int main(void)
 	else if (nmod10 > 5)
 	printf("greater than 5\n");
 
- 	return (0);
-} 
+	return (0);
+}
