@@ -13,12 +13,12 @@
 
 int main(void)
 {
-	int n;
+	int n, nmod10;
 
 	srand(time(0));
 	n = rand() - RAND_MAX / 2;
 	/* your code goes there */
-	int nmod10 = n % 10;
+	nmod10 = n % 10;
 	printf("n mod 10 is %d\n", nmod10);
 	printf("Last digit of %d is %d and is ", n, nmod10);
 	if (n == 0)
