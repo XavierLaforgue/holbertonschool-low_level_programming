@@ -7,6 +7,22 @@
  * Return: the value of the last digit
  */
 
+int print_last_digit(int n)
+{
+	unsigned int r;
+
+	r = _abs(n);
+	r = r % 10;
+	_putchar('0' + r);
+
+	return (r);
+}
+
+/**
+ * _abs - absolute value
+ * @s: integer
+ * Return: the absolute value
+ */
 int _abs(int s)
 {
 	if (s >= 0)
@@ -15,13 +31,3 @@ int _abs(int s)
 		return (-s);
 }
 
-int print_last_digit(int n)
-{
-	unsigned int r;
-
-	r = _abs(n);
-	r = r%10;
-	_putchar('0'+r);
-
-	return (r);
-}
