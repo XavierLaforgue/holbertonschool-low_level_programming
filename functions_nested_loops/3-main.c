@@ -1,9 +1,9 @@
 #include "main.h"
 
 /**
- * main - checks for lowercase character
+ * main - check the code
  *
- * Return: 1 if c is lowercase, 0 otherwise
+ * Return: always 0
  */
 
 int main(void)
