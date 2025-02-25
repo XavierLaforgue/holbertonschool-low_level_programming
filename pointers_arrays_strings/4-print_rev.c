@@ -18,5 +18,4 @@ void print_rev(char *s)
 	}
 	for (i = 0; i <= size; i++)
 		_putchar(*(s + size - i));
-	_putchar('\n');
 }
