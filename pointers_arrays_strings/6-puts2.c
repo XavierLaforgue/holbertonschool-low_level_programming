@@ -3,6 +3,7 @@
 /**
  * puts2 - prints every other character of a string, starting with the first
  * character, followed by a new line
+ * @str: input string (character array/pointer)
  *
  * Return: void
  */
@@ -14,7 +15,7 @@ void puts2(char *str)
 	for (size = 0; str[size] != 0; ++size)
 	{
 	}
-	for (i = 0; i < size; i = i + 2)
+	for (i = 0; i < size; i += 2)
 	{
 		_putchar(str[i]);
 	}
