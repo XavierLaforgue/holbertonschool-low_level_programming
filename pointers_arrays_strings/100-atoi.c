@@ -38,8 +38,9 @@ int _atoi(char *s)
 	num = 0;
 	for (i = i_l; i >= i_f && i != size; --i)
 	{
-		num = sign * pow * (s[i] - '0') + num;
-		pow = 10 * pow;
+		if (i < i_l)
+			pow = pow * 10;
+		num += sign * pow * (s[i] - '0');
 	}
 	return (num);
 }
