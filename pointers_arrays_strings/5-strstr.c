@@ -37,9 +37,9 @@ char *_strchr(char *s, char c)
 char *_strstr(char *haystack, char *needle)
 {
 	int j;
-	char *found = haystack;
+	char *found;
 
-	found = _strchr(found, needle[0]);
+	found = _strchr(haystack, needle[0]);
 	while (found != NULL)
 	{
 		j = 0;

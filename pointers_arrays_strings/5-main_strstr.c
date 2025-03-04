@@ -13,7 +13,7 @@ int main(void)
 	char *t;
 	char *found;
 	char *s_test = "the day the world stopped spinning";
-	char *f_test = "the w";
+	char *f_test = "\0";
 
 	t = _strstr(s, f);
 	printf("%s\n", t);
