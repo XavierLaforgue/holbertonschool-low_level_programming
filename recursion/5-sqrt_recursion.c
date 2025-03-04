@@ -1,9 +1,9 @@
 #include "main.h"
 
 /**
- * _sqrt_compute - find the sqrt
+ * _sqrt - find the sqrt
  * @n: number to find sqrt
- * @g: Current guess for sqrt
+ * @m: Current guess for sqrt
  * Return: int sqrt
  */
 
@@ -34,5 +34,5 @@ int _sqrt_recursion(int n)
 		return (-1);
 	}
 
-	return (_sqrt(n, 1));
+	return (_sqrt(n, 0));
 }
