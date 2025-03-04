@@ -28,7 +28,9 @@ int _sqrt(int n, int i)
 
 int _sqrt_recursion(int n)
 {
+	int guess = 0;
+
 	if (n < 0)
 		return (-1);
-	return (_sqrt(n, 0));
+	return (_sqrt(n, guess));
 }
