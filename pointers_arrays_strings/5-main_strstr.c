@@ -1,5 +1,6 @@
 #include "main.h"
 #include <stdio.h>
+#include <string.h>
 
 /**
  * main - check the code
@@ -20,5 +21,8 @@ int main(void)
 
 	found = _strstr(s_test, f_test);
 	printf("FOUND: \"%s\"\n", found);
+
+	found = strstr(s_test, f_test);
+	printf("Standard function found: \"%s\"\n", found);
 	return (0);
 }

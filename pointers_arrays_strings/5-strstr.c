@@ -39,7 +39,10 @@ char *_strstr(char *haystack, char *needle)
 	int j;
 	char *found;
 
-	found = _strchr(haystack, needle[0]);
+	if (needle[0] != '\0')
+		found = _strchr(haystack, needle[0]);
+	else
+		return (haystack);
 	while (found != NULL)
 	{
 		j = 0;

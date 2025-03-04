@@ -1,5 +1,6 @@
 #include "main.h"
 #include <stdio.h>
+#include <string.h>
 
 /**
  * main - check the code
@@ -20,9 +21,14 @@ int main(void)
 		printf("Didn\' find the character %c in string \"%s\"\n", character, test);
 	else
 		printf("FOUND: \"%s\"\n", f_test);
+	f_test = strchr(test, character);
+	if (f_test == NULL)
+		printf("Standard strchr didn\' find \"%c\" in \"%s\"\n", character, test);
+	else
+		printf("Standrad strchr FOUND: \"%s\"\n", f_test);
 	if (f != NULL)
 	{
-		printf("%s\n", f);
+		printf("Example result: %s\n", f);
 	}
 	return (0);
 }
