@@ -26,5 +26,7 @@ int main(void)
 	printf("%d\n", r);
 	r = _sqrt_recursion(0);
 	printf("%d\n", r);
+	r = _sqrt_recursion('y');
+	printf("%d\n", r);
 	return (0);
 }
