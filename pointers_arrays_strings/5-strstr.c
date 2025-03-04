@@ -1,5 +1,7 @@
 #include "main.h"
-#include <stdio.h>
+#ifndef NULL
+	#define NULL ((void *)0)
+#endif
 
 /**
  * _strchr - locates a character in a string
@@ -10,9 +12,12 @@
 
 char *_strchr(char *s, char c)
 {
-	int i;
+	int i, size;
 
-	for (i = 0; s[i]; ++i)
+	for (size = 0; s[size] != '\0'; ++size)
+	{
+	}
+	for (i = 0; i <= size; ++i)
 	{
 		if (*(s + i) == c)
 			return (s + i);
@@ -34,16 +39,19 @@ char *_strstr(char *haystack, char *needle)
 	int j;
 	char *found = haystack;
 
+	found = _strchr(found, needle[0]);
 	while (found != NULL)
 	{
-		found = _strchr(found, needle[0]);
 		j = 0;
-		while (found[j] == needle[j] && needle[j] != '\0' && haystack[j] != 0)
+		while (found[j] == needle[j] && needle[j] != '\0' && found[j] != '\0')
 		{
 			++j;
 		}
-		if (needle[j] == 0)
+		if (needle[j] == '\0')
 			return (found);
+		else if (found[j] == '\0')
+			return (NULL);
+		found = _strchr(found + j, needle[0]);
 	}
 	return (NULL);
 }
