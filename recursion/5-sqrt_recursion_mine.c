@@ -2,19 +2,19 @@
 
 /**
  * _sqrt - searches for the natural square root of a natural number
- * via recursive descending essays
+ * via recursive ascending essays
  * @n: natural number whose natural square root will be calculated
- * @m: depth of the current attempt
+ * @m: identifier of the current attempt
  * Return: -1 if n is negative or if there is no natural square root; the
  * natural square root otherwise
  */
 
 int _sqrt(int n, int m)
 {
-	if (n - m < 0)
+	if (m * m > n)
 		return (-1);
-	if (((n - m) * (n - m)) == n)
-		return (n - m);
+	if (m * m == n)
+		return (m);
 
 	return (_sqrt(n, m + 1));
 }
