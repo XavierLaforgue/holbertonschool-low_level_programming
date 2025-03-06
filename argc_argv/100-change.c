@@ -21,7 +21,10 @@ int main(int argc, char *argv[])
 		return (1);
 	}
 	if (atoi(argv[1]) < 0)
+	{
 		printf("0\n");
+		return (0);
+	}
 	pieces25 = atoi(argv[1]) / 25;
 	pieces10 = (atoi(argv[1]) % 25) / 10;
 	pieces5 = ((atoi(argv[1]) % 25) % 10) / 5;
