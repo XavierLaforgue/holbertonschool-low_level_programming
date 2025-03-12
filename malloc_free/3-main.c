@@ -37,18 +37,23 @@ void print_grid(int **grid, int width, int height)
 int main(void)
 {
 	int **grid;
+	int width, height;
 
-	grid = alloc_grid(6, 4);
+	width = 6;
+	height = 4;
+	grid = alloc_grid(width, height);
 	if (grid == NULL)
 	{
 		return (1);
 	}
 
-	print_grid(grid, 6, 4);
+	print_grid(grid, width, height);
 	printf("\n");
-	grid[0][3] = 98;
-	grid[3][4] = 402;
-	print_grid(grid, 6, 4);
+	if (height >= 3)
+		grid[0][3] = 98;
+	if (width >= 4 && height >= 3)
+		grid[3][4] = 402;
+	print_grid(grid, width, height);
 
 	return (0);
 }
