@@ -1,5 +1,5 @@
-#ifndef MYHEADER_H
-#define MYHEADER_H
+#ifndef dog_H
+#define dog_H
 
 /**
  * struct dog - structure that contains the characeteristics of a dog
