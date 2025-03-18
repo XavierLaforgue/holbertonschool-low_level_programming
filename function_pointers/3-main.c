@@ -18,7 +18,7 @@
 int main(int argc, char *argv[])
 {
 	int (*op_ptr)(int, int);
-	int res;
+	int res, num2;
 
 	if (argc != 4)
 	{
@@ -31,12 +31,13 @@ int main(int argc, char *argv[])
 		printf("Error\n");
 		exit(99);
 	}
-	if ((*argv[2] == '/' || *argv[2] == '%') && atoi(argv[3]) == 0)
+	num2 = atoi(argv[3]);
+	if ((*argv[2] == '/' || *argv[2] == '%') && num2 == 0)
 	{
 		printf("Error\n");
 		exit(100);
 	}
-	res = op_ptr(atoi(argv[1]), atoi(argv[3]));
+	res = op_ptr(atoi(argv[1]), num2);
 	printf("%d\n", res);
 	return (0);
 }
