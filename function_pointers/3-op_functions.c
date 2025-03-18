@@ -1,6 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-
 /**
  * op_add - sums two integers a and b
  * @a: first integer
