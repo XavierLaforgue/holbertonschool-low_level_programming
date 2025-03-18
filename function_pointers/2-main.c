@@ -36,10 +36,22 @@ int abs_is_98(int elem)
 }
 
 /**
+ * is_34 - determines if integer is 34
+ * @elem: integer input
+ * Return: 1 if input is 34
+ */
+
+int is_34(int elem)
+{
+	return (elem == 34);
+}
+
+/**
  * main - check the code
  *
  * Return: Always 0.
  */
+
 int main(void)
 {
 	int array[20] = {0, -98, 98, 402, 1024, 4096, -1024, -98, 1, 2, 3, 4, 5,
@@ -53,6 +65,8 @@ int main(void)
 	index = int_index(array, 20, is_strictly_positive);
 	printf("%d\n", index);
 	index = int_index(array, 20, NULL);
+	printf("%d\n", index);
+	index = int_index(array, 20, is_34);
 	printf("%d\n", index);
 
 	return (0);
