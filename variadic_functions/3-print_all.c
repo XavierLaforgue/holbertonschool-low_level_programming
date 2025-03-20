@@ -11,34 +11,34 @@ void print_all(const char * const format, ...)
 	va_list va;
 	char str_printf[3] = {'%', '\0', '\0'};
 	unsigned int n = 0;
-	int printed = 0;
 	char *str;
+	int allowed_format;
 
 	va_start(va, format);
 	while (format[n] != '\0')
 	{
-		if (n != 0 && printed > 0)
+		allowed_format = format[n] == 'c' || format[n] == 's' ||
+							format[n] == 'i' || format[n] == 'f';
+		if (n != 0 && allowed_format)
 			printf(", ");
 		str_printf[1] = format[n];
 		switch (format[n])
 		{
 			case 'c':
-				printed = printf(str_printf, va_arg(va, int));
+				printf(str_printf, va_arg(va, int));
 				break;
 			case 'i':
-				printed = printf(str_printf, va_arg(va, int));
+				printf(str_printf, va_arg(va, int));
 				break;
 			case 'f':
-				printed = printf(str_printf, va_arg(va, double));
+				printf(str_printf, va_arg(va, double));
 				break;
 			case 's':
 				str = va_arg(va, char *);
 				if (str == NULL)
 					str = "(nil)";
-				printed = printf(str_printf, str);
+				printf(str_printf, str);
 				break;
-			default:
-				printed = 0;
 		}
 		++n;
 	}
