@@ -11,16 +11,16 @@ void print_all(const char * const format, ...)
 	va_list va;
 	char str_printf[3] = {'%', '\0', '\0'};
 	unsigned int n = 0;
+	int print_next;
 	int printed = 0;
 	char *str;
-	int allowed_format;
 
 	va_start(va, format);
-	while (format[n] != '\0')
+	while (format != NULL && format[n] != '\0')
 	{
-		allowed_format = format[n] == 'c' || format[n] == 's' ||
-						format[n] == 'i' || format[n] == 'f';
-		if (n != 0 && printed > 0 && allowed_format)
+		print_next = (format[n] == 'c' || format[n] == 'i' ||
+			format[n] == 'f' || format[n] == 's');
+		if (n != 0 && print_next && printed)
 			printf(", ");
 		str_printf[1] = format[n];
 		switch (format[n])
@@ -40,11 +40,9 @@ void print_all(const char * const format, ...)
 					str = "(nil)";
 				printed = printf(str_printf, str);
 				break;
-			default:
-				printed = 0;
 		}
 		++n;
 	}
-	va_end(va);
 	printf("\n");
+	va_end(va);
 }
