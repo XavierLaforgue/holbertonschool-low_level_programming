@@ -36,6 +36,7 @@ int main(void)
 	out = delete_dnodeint_at_index(&head, 0);
 	print_dlistint(head);
 	printf("output = %d\n", out);
+	/*
 	printf("---add node 0 to beginning of single-node list------------\n");
 	add_dnodeint(&head, 0);
 	print_dlistint(head);
@@ -67,6 +68,7 @@ int main(void)
 	out = delete_dnodeint_at_index(&head, 2);
 	print_dlistint(head);
 	printf("output = %d\n", out);
+	*/
 	/*
 	printf("------->1----------\n");
 	delete_dnodeint_at_index(&head, 5);
