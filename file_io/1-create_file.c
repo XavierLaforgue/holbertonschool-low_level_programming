@@ -23,17 +23,13 @@ int create_file(const char *filename, char *text_content)
 	fd = open(filename, O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR);
 	if (fd == -1)
 		return (-1);
-	printf("File descriptor: %i / File name: %s\n", fd, filename);
 	text_len = 0;
 	while (text_content[text_len] != '\0')
 		++text_len;
 	bytes_written = write(fd, text_content, text_len);
-	if (bytes_written == -1)
-	{
-		close(fd);
-		return (-1);
-	}
 	close(fd);
+	if (bytes_written == -1)
+		return (-1);
 
 	return (1);
 }
