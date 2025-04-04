@@ -45,20 +45,31 @@ void err_fd_to(int fd_to, ssize_t b_cp_to, int fd_from, char *fd_to_name)
 }
 
 /**
- * err_cannot_close - prints an error message when file descriptor could not
- * be closed
- * @err_true: logical operation that gives true if there was an error and
- * false otherwise
- * @fd: filedescriptor of the file that could not be closed
+ * close_fd - closes two files if they are open and prints an error message if
+ * it fails to close them
+ * @fd_from: file descriptor of first file to close
+ * @fd_to: filedescriptor of second file to close
  * Return: nothing
  */
 
-void err_cannot_close(int err_true, int fd)
+void close_fd(int fd_from, int fd_to)
 {
-	if (!err_true)
-		return;
-	dprintf(STDERR_FILENO, "Error: Can't close fd %i\n", fd);
-	exit(100);
+	ssize_t fd_from_close, fd_to_close;
+
+	if (fd_from != -1)
+		fd_from_close = close(fd_from);
+	if (fd_to != -1)
+		fd_to_close = close(fd_to);
+	if (fd_from_close == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't close fd %i\n", fd_from);
+		exit(100);
+	}
+	if (fd_to_close == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't close fd %i\n", fd_to);
+		exit(100);
+	}
 }
 
 /**
@@ -84,7 +95,7 @@ void error_args(int err_true)
 
 int main(int argc, char *argv[])
 {
-	int fd_from, fd_to, fd_to_close, fd_from_close;
+	int fd_from, fd_to;
 	ssize_t b_cp_from = 1, b_cp_to = 1;
 	char buff[sizeof_buffer];
 	mode_t file_to_mode = S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH;
@@ -94,17 +105,14 @@ int main(int argc, char *argv[])
 	fd_to = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, file_to_mode);
 	err_fd_from(fd_from, b_cp_from, fd_to, argv[1]);
 	err_fd_to(fd_to, b_cp_to, fd_from, argv[2]);
-	while (b_cp_from > 0)
+	while (b_cp_from > 0 && b_cp_to > 0)
 	{
 		b_cp_from = read(fd_from, buff, sizeof_buffer);
 		err_fd_from(fd_from, b_cp_from, fd_to, argv[1]);
 		b_cp_to = write(fd_to, buff, b_cp_from);
 		err_fd_to(fd_to, b_cp_to, fd_from, argv[2]);
 	}
-	fd_from_close = close(fd_from);
-	fd_to_close = close(fd_to);
-	err_cannot_close(fd_from_close == -1, fd_from);
-	err_cannot_close(fd_to_close == -1, fd_to);
+	close_fd(fd_from, fd_to);
 
 	return (0);
 }
