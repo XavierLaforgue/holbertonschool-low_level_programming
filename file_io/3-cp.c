@@ -100,8 +100,8 @@ int main(int argc, char *argv[])
 		err_fd_to(fd_to, b_cp_to, fd_from, argv[2]);
 	}
 	fd_from_close = close(fd_from);
-	err_cannot_close(fd_from_close == -1, fd_from);
 	fd_to_close = close(fd_to);
+	err_cannot_close(fd_from_close == -1, fd_from);
 	err_cannot_close(fd_to_close == -1, fd_to);
 
 	return (0);
