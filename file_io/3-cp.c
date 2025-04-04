@@ -99,7 +99,7 @@ int main(int argc, char *argv[])
 	ssize_t bytes_read;
 
 	if (argc != 3)
-		error_exit_str(99997, "Usage: cp file_from file_to\n", "");
+		error_exit_str(97, "NOT THIS Usage: cp file_from file_to\n", "");
 
 	fd_from = open(argv[1], O_RDONLY);
 	if (fd_from == -1)
