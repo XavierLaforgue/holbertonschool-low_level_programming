@@ -17,21 +17,12 @@ int create_file(const char *filename, char *text_content)
 	ssize_t bytes_written;
 
 	if (!filename)
-	{
-		printf("no filename\n");
 		return (-1);
-	}
 	if (!text_content)
-	{
-		printf("text_content is empty\n");
 		text_content = "";
-	}
 	fd = open(filename, O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR);
 	if (fd == -1)
-	{
-		printf("did not open file\n");
 		return (-1);
-	}
 	printf("File descriptor: %i / File name: %s\n", fd, filename);
 	text_len = 0;
 	while (text_content[text_len] != '\0')
@@ -40,7 +31,6 @@ int create_file(const char *filename, char *text_content)
 	if (bytes_written == -1)
 	{
 		close(fd);
-		printf("did not write in file\n");
 		return (-1);
 	}
 	close(fd);
