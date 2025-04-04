@@ -1,5 +1,5 @@
 #include "main.h"
-
+#define sizeof_buffer 1024
 /**
  * err_fd_from - prints an error message when file could not be read
  * @fd_from: file descriptor of file to copy contents from
@@ -84,7 +84,7 @@ int main(int argc, char *argv[])
 {
 	int fd_from, fd_to, fd_to_close, fd_from_close;
 	ssize_t b_cp_from = 1, b_cp_to = 1;
-	char buff[1024];
+	char buff[sizeof_buffer];
 	mode_t file_to_mode = S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH;
 
 	error_args(argc != 3);
@@ -94,7 +94,7 @@ int main(int argc, char *argv[])
 	err_fd_to(fd_to, b_cp_to, fd_from, argv[2]);
 	while (b_cp_from > 0)
 	{
-		b_cp_from = read(fd_from, buff, 1024);
+		b_cp_from = read(fd_from, buff, sizeof_buffer);
 		err_fd_from(fd_from, b_cp_from, fd_to, argv[1]);
 		b_cp_to = write(fd_to, buff, b_cp_from);
 		err_fd_to(fd_to, b_cp_to, fd_from, argv[2]);
