@@ -98,7 +98,7 @@ void close_fd(int fd_from, int fd_to)
 int main(int argc, char *argv[])
 {
 	int fd_from, fd_to;
-	ssize_t b_cp_from = 1, b_cp_to = 1;
+	ssize_t b_cp_from, b_cp_to = 1;
 	char buff[sizeof_buffer];
 	mode_t file_to_mode = S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH;
 
@@ -106,6 +106,13 @@ int main(int argc, char *argv[])
 	fd_from = open(argv[1], O_RDONLY);
 	if (fd_from == -1)
 	{
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
+		exit(98);
+	}
+	b_cp_from = read(fd_from, buff, sizeof_buffer);
+	if (b_cp_from == -1)
+	{
+		close(fd_from);
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
 		exit(98);
 	}
@@ -119,10 +126,10 @@ int main(int argc, char *argv[])
 	/*err_fd_to(fd_to, b_cp_to, fd_from, argv[2]);*/
 	while (b_cp_from > 0 && b_cp_to > 0)
 	{
-		b_cp_from = read(fd_from, buff, sizeof_buffer);
-		err_fd_from(fd_from, b_cp_from, fd_to, argv[1]);
 		b_cp_to = write(fd_to, buff, b_cp_from);
 		err_fd_to(fd_to, b_cp_to, fd_from, argv[2]);
+		b_cp_from = read(fd_from, buff, sizeof_buffer);
+		err_fd_from(fd_from, b_cp_from, fd_to, argv[1]);
 	}
 	close_fd(fd_from, fd_to);
 
