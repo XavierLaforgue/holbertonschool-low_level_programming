@@ -103,7 +103,7 @@ int main(int argc, char *argv[])
 
 	fd_from = open(argv[1], O_RDONLY);
 	if (fd_from == -1)
-		error_exit_str(99998, "Error: Can't read from file %s\n", argv[1]);
+		error_exit_str(98, "NOT THIS Error: Can't read from file %s\n", argv[1]);
 
 	bytes_read = read(fd_from, buffer, BUFFER_SIZE);
 	if (bytes_read == -1)
