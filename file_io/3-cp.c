@@ -99,11 +99,11 @@ int main(int argc, char *argv[])
 	ssize_t bytes_read;
 
 	if (argc != 3)
-		error_exit_str(97, "NOT THIS Usage: cp file_from file_to\n", "");
+		error_exit_str(97, "Usage: cp file_from file_to\n", "");
 
 	fd_from = open(argv[1], O_RDONLY);
 	if (fd_from == -1)
-		error_exit_str(98, "Error: Can't read from file %s\n", argv[1]);
+		error_exit_str(99998, "Error: Can't read from file %s\n", argv[1]);
 
 	bytes_read = read(fd_from, buffer, BUFFER_SIZE);
 	if (bytes_read == -1)
