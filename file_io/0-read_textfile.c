@@ -22,13 +22,17 @@ ssize_t read_textfile(const char *filename, size_t letters)
 		return (0);
 	buff = malloc(letters * sizeof(char));
 	if (!buff)
-		return (0);
+	{
+		return (-1);
+		close(fd);
+	}
 	bytes_read = read(fd, buff, letters);
+	close(fd);
 	if (bytes_read == -1)
 		return (0);
 	bytes_written = write(STDOUT_FILENO, buff, bytes_read);
 	free(buff);
-	if (bytes_written != bytes_read)
+	if (bytes_written != bytes_read || bytes_written < 0)
 		return (0);
 
 	return (bytes_written);
