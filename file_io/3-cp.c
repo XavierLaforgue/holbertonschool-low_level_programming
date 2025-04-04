@@ -109,7 +109,7 @@ int main(int argc, char *argv[])
 	if (bytes_read == -1)
 	{
 		close(fd_from);
-		error_exit_str(99998, "Error: Can't read from file %s\n", argv[1]);
+		error_exit_str(98, "NOT THIS Error: Can't read from file %s\n", argv[1]);
 	}
 
 	fd_to = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);

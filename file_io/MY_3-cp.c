@@ -95,6 +95,7 @@ int main(int argc, char *argv[])
 	while (b_cp_from > 0)
 	{
 		b_cp_from = read(fd_from, buff, sizeof_buffer);
+		b_cp_from = -1;
 		err_fd_from(fd_from, b_cp_from, fd_to, argv[1]);
 		b_cp_to = write(fd_to, buff, b_cp_from);
 		err_fd_to(fd_to, b_cp_to, fd_from, argv[2]);
