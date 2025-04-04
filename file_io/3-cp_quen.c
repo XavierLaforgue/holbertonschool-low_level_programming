@@ -116,7 +116,7 @@ int main(int argc, char *argv[])
 	if (fd_to == -1)
 	{
 		close(fd_from);
-		error_exit_str(99, "NOT THIDS Error: Can't write to %s\n", argv[2]);
+		error_exit_str(99, "Error: Can't write to %s\n", argv[2]);
 	}
 
 	copy(fd_from, fd_to, argv[1], argv[2], buffer, bytes_read);
