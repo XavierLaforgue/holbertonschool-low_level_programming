@@ -8,7 +8,7 @@
  */
 
 void error_args(int err_true)
- {
+{
 	if (err_true)
 	{
 		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
