@@ -110,8 +110,13 @@ int main(int argc, char *argv[])
 		exit(98);
 	}
 	fd_to = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, file_to_mode);
+	if (fd_to == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
+		exit(99);
+	}
 	/*err_fd_from(fd_from, b_cp_from, fd_to, argv[1]);*/
-	err_fd_to(fd_to, b_cp_to, fd_from, argv[2]);
+	/*err_fd_to(fd_to, b_cp_to, fd_from, argv[2]);*/
 	while (b_cp_from > 0 && b_cp_to > 0)
 	{
 		b_cp_from = read(fd_from, buff, sizeof_buffer);
