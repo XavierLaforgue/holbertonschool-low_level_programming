@@ -39,7 +39,7 @@ int main(void)
 	int **grid;
 	int width, height;
 
-	width = 6;
+	width = 0;
 	height = 4;
 	grid = alloc_grid(width, height);
 	if (grid == NULL)
