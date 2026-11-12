@@ -1,1 +1,1 @@
-Week 9. Projet 2. Doubly-linked lists
+Week 9, project 2: doubly linked lists
